@@ -6,6 +6,7 @@ import os
 
 supportPerson = "Lasse Gøransson"
 scTerm = "lasse"
+soundfile = "muttley.mp3"
 refreshRate = 20 #secs
 
 
@@ -26,10 +27,13 @@ def playSound():
         os.system('play --no-show-progress --null --channels 1 synth %s sine %f' % ( 0.1, freg))
         freg += 300
 
+def playSoundFile(soundfile):
+    os.system('cvlc '+soundfile+' --play-and-exit 2> /dev/null')
 
 
 
-playSound()
+
+playSoundFile(soundfile)
 tickets = []
 
 while True:
