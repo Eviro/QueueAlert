@@ -23,9 +23,11 @@ class Ticket:
 
 def playSound():
    freg = 350
-   for x in xrange(2):
-        os.system('play --no-show-progress --null --channels 1 synth %s sine %f' % ( 0.1, freg))
-        freg += 300
+   time = 0.01
+   for x in xrange(7):
+        os.system('play --no-show-progress --null --channels 1 synth %s sine %f' % ( time, freg))
+        freg += 112
+	time += 0.00
 
 def playSoundFile(soundfile):
     os.system('cvlc '+soundfile+' --play-and-exit 2> /dev/null')
