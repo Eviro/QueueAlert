@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 import requests
 import xml.etree.ElementTree as ET
@@ -42,7 +43,7 @@ while True:
      prevNum = len(tickets)
      # Get all cases from the servicedesk
 
-     r = requests.get('http://10.80.0.135/api/public/index.php/efecte/get/sd/506185')
+     r = requests.get('http://10.80.0.135:81/efecte/get/sd/506185')
 
      root = ET.fromstring(r.text.encode('utf-8'))
 
@@ -92,10 +93,10 @@ while True:
              tickets.append(newTicket)
 
      if prevNum < len(tickets):
-         print '############## Ny sag #################'
+         #print '############## Ny sag #################'
          playSound()
 
 
-     print "Previous: %s Now: %s at: %s" % (prevNum,len(tickets),str(time.strftime("%H:%M:%S")))
+     #print "Previous: %s Now: %s at: %s" % (prevNum,len(tickets),str(time.strftime("%H:%M:%S")))
 
      time.sleep(refreshRate)
