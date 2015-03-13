@@ -20,14 +20,19 @@ class Ticket:
         self.status = ""
         self.servicecomment = ""
 
-
+def speak(diff):
+   playSound()
+   string = "You have. %s new cases in your queue" % diff
+   string = 'espeak -s 140 -p 65 -a 160 -v en-us  "%s"' % string
+   os.system(string)
+   playSound()
 
 def playSound():
    freg = 350
    time = 0.01
-   for x in xrange(7):
+   for x in xrange(2):
         os.system('play --no-show-progress --null --channels 1 synth %s sine %f' % ( time, freg))
-        freg += 112
+        freg += 50
 	time += 0.00
 
 def playSoundFile(soundfile):
@@ -36,10 +41,11 @@ def playSoundFile(soundfile):
 
 
 
-playSoundFile(soundfile)
+
 tickets = []
 
 while True:
+
      prevNum = len(tickets)
      # Get all cases from the servicedesk
 
@@ -94,7 +100,7 @@ while True:
 
      if prevNum < len(tickets):
          #print '############## Ny sag #################'
-         playSound()
+         speak((len(tickets)-prevNum))
 
 
      #print "Previous: %s Now: %s at: %s" % (prevNum,len(tickets),str(time.strftime("%H:%M:%S")))

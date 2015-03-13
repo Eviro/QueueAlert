@@ -1,1 +1,1 @@
-sudo apt-get install sox vlc-nox -y
+sudo apt-get install sox vlc-nox espeak -y
