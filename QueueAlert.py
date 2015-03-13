@@ -20,6 +20,9 @@ class Ticket:
         self.status = ""
         self.servicecomment = ""
 
+def notify():
+   os.system('notify-send -u normal -t 50000000  "New case(s) has been added to queue" "At: "$(date +"%H:%M" )')
+
 def speak(diff):
    playSound()
    string = "You have. %s new cases in your queue" % diff
@@ -101,6 +104,7 @@ while True:
      if prevNum < len(tickets):
          #print '############## Ny sag #################'
          speak((len(tickets)-prevNum))
+	 notify()
 
 
      #print "Previous: %s Now: %s at: %s" % (prevNum,len(tickets),str(time.strftime("%H:%M:%S")))
